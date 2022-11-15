@@ -8,8 +8,12 @@ def analyze(req):
     text = req.GET.get("text","Default")
     removePunc = req.GET.get("removepunc","off")
     capitalize = req.GET.get("capitalize","off")
+    uppercase = req.GET.get('uppercase','off')
+    lowercase = req.GET.get('lowercase')
+    newLineRemover = req.GET.get('newlineremover')
     analyzed = ""
     
+    # Remveve Punchuation
     if removePunc == "on":
         validPunch = '''!"#$%&'()*+, -./:;<=>?@[\]^_`{|}~'''
         for char in text:
@@ -20,5 +24,16 @@ def analyze(req):
     elif capitalize == "on":
         analyzed = text.capitalize()
 
+    # Upcase Text
+    elif uppercase == "on":
+        analyzed = text.upper()
+
+    # Lowercase Text
+    elif lowercase == "on":
+        analyzed = text.lower()
+
+    elif newLineRemover == "on":
+        pass
+    
     data = {"text":analyzed}
     return render(req,"analyze.html",data)
