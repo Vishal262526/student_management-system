@@ -46,7 +46,8 @@
 
   <div class="container mt-4">
     <h1 class="text-primary">Welcome to AnalyText: Enter text to Analyze</h1>
-    <form action="/analyze" method="GET">
+    <form action="/analyze" method="POST">
+      {% csrf_token %}
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
         <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
@@ -70,6 +71,10 @@
       <div class="form-check mb-3">
         <input class="form-check-input" type="checkbox" id="newlineremover" name="newlineremover">
         <label class="form-check-label" for="newlineremover">Remove New Line</label>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="spaceremover" name="spaceremover">
+        <label class="form-check-label" for="spaceremover">Space Remover</label>
       </div>
       <div>
         <button class="btn btn-primary">UpperCase</button>
